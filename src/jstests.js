@@ -1,33 +1,27 @@
-function transform(arr) {
-    if( !Array.isArray(arr) ) throw new Error('input is not array');
+function createDreamTeam(members) {
+    if( !Array.isArray(members) || members.length === 0 ){ return  false}
+    const regexp = /[a-zA-Z]/g;
+    let arr = [];
+    for(let i = 0; i < members.length;i++){
+        if(typeof members[i] !== "string" ){continue}
+        if(typeof members[i] === "string" ){members[i] = members[i][members[i].search(regexp)];
+            arr.push(members[i])}
 
-    for(let i = 0;i < arr.length;i++){
-        switch (arr[i]) {
-            case "--discard-next":
-                (arr[i+1] ===undefined) ?  arr.splice(i,1):   arr.splice(i,2);
-                break;
-            case  "--discard-prev":
-                (arr[i-1] === undefined) ? arr.splice(i,1):arr.splice(i-1,2);
-                break;
-            case "--double-next":
-                (arr[i+1] ===undefined) ? arr.splice(i,1):arr.splice(i,1,arr[i+1]);
-                break;
-            case "--double-prev":
-                (arr[i-1] === undefined) ?   arr.splice(i,1): arr.splice(i,1,arr[i-1]);
-                break;
-        }
-        }
+    }
+    console.log(arr.sort().join('').toUpperCase())
+    return arr.sort().join('').toUpperCase();
 
-    console.log(arr)
-        }
-
-
-
-console.log([1,"--discard-next", true, 3,4, 5])
-transform([1,"--discard-next", 2, 3,4, 5]);
-console.log([1,"--discard-prev", 2, 3,4, 5])
-transform([1,"--discard-prev", 2, 3,4, 5]);
-console.log([1,"--double-prev", 2, 3,4, 5])
-transform([1,"12","--double-prev", 2, 3,4, 5]);
-console.log([1,"--double-next", 2, 3,4, 5])
-transform([1,"--double-next", 2, 3,4, 5]);
+};
+let arr = [['David Abram'],
+    ['Robin Attfield'],
+    'Thomas Berry',
+    ['Paul R.Ehrlich'],
+    'donna Haraway',
+    ' BrIaN_gOodWiN  ',
+    {
+        0: 'Serenella Iovino'
+    },
+    'Erazim Kohak',
+    '  val_plumwood',
+    ]
+console.log(createDreamTeam(arr))
