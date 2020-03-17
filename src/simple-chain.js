@@ -1,23 +1,36 @@
 const chainMaker = {
+  chain: [],
   getLength() {
-    throw 'Not implemented';
 
+    return this.chain.length
   },
   addLink(value) {
-    throw 'Not implemented';
+    this.chain.push(value);
+    return this
+
     
   },
   removeLink(position) {
-    throw 'Not implemented';
-    // remove line with error and write your code here
+    if(this.chain[position] === undefined){ throw new Error('Error')}
+    this.chain.splice(position - 1,1);
+    return this
   },
   reverseChain() {
-    throw 'Not implemented';
-    // remove line with error and write your code here
+    this.chain.reverse();
+    return this
   },
   finishChain() {
-    throw 'Not implemented';
-    // remove line with error and write your code here
+     let finalChain = '';
+     this.chain.map( (elem,i) => {
+       if( i > 0){
+         finalChain += `~~( ${elem} )`
+       }else{
+         finalChain += `( ${elem} )`
+       }
+         }
+     )
+
+    return finalChain
   }
 };
 
