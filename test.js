@@ -1,8 +1,8 @@
+require('./test/simple-chain.test');
+/*
+
 
 require('./test/recursive-depth.test');
-/*
-require('./test/simple-chain.test');
-
 require('./test/count-cats.test');
 require('./test/carbon-dating.test');
 require('./test/dream-team.test');

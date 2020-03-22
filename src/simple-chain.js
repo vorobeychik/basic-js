@@ -11,7 +11,7 @@ const chainMaker = {
     
   },
   removeLink(position) {
-    if(this.chain[position] === undefined){ throw new Error('Error')}
+    if(this.chain[position] === undefined || typeof  position !== "number" ){ throw new Error('Error')}
     this.chain.splice(position - 1,1);
     return this
   },
@@ -29,7 +29,7 @@ const chainMaker = {
        }
          }
      )
-
+    this.value = ''
     return finalChain
   }
 };
